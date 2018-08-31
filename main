@@ -1,0 +1,115 @@
+//Arduino Basic Workshop
+//LED Bar Graph Creation Using PhotoResistor as Analog Input
+// Nicholas Posey
+// CSUF IEEECS Early Year Arduino Basic Workshop
+
+//Basic knowledge of C or C++ required as well as introductory Circuits
+//Note: Resistance of Photoresistors is inversely proportional to light intensity
+//    Therefore, increasing light intensity will decrease the value of the resistance
+
+
+void setup() {
+  // initialize pins as outputs
+    pinMode(2, OUTPUT);
+    pinMode(3, OUTPUT);
+    pinMode(4, OUTPUT);
+    pinMode(5, OUTPUT);
+    pinMode(6, OUTPUT);
+    pinMode(7, OUTPUT);
+    pinMode(8, OUTPUT);
+    pinMode(9, OUTPUT);
+    
+  // Pin to be used as analog input
+    pinMode(A1, INPUT);
+
+    //TESTING
+    Serial.begin(9600);
+}
+
+void loop() {
+  
+  //Changes occur to often to reliably use interrupts and will instead be reliant on 
+  //     ticks, or loops
+
+  int lightLevel;
+  lightLevel = analogRead(A1);
+  
+  //Following is a basic if, else if, else code block to be used to control the lights
+    if(lightLevel > 800){
+    digitalWrite(2, HIGH);
+    digitalWrite(3, HIGH);
+    digitalWrite(4, HIGH);
+    digitalWrite(5, HIGH);
+    digitalWrite(6, HIGH);
+    digitalWrite(7, HIGH);
+    digitalWrite(8, HIGH);
+    digitalWrite(9, HIGH);
+    }
+    else if(lightLevel > 700){
+    digitalWrite(2, HIGH);
+    digitalWrite(3, HIGH);
+    digitalWrite(4, HIGH);
+    digitalWrite(5, HIGH);
+    digitalWrite(6, HIGH);
+    digitalWrite(7, HIGH);
+    digitalWrite(8, HIGH);
+    }
+    else if(lightLevel > 600){
+    digitalWrite(2, HIGH);
+    digitalWrite(3, HIGH);
+    digitalWrite(4, HIGH);
+    digitalWrite(5, HIGH);
+    digitalWrite(6, HIGH);
+    digitalWrite(7, HIGH);
+    }
+    else if(lightLevel > 5000){
+    digitalWrite(2, HIGH);
+    digitalWrite(3, HIGH);
+    digitalWrite(4, HIGH);
+    digitalWrite(5, HIGH);
+    digitalWrite(6, HIGH);
+    }
+    else if(lightLevel > 400){
+    digitalWrite(2, HIGH);
+    digitalWrite(3, HIGH);
+    digitalWrite(4, HIGH);
+    digitalWrite(5, HIGH);
+    }
+    else if(lightLevel > 300){
+    digitalWrite(2, HIGH);
+    digitalWrite(3, HIGH);
+    digitalWrite(4, HIGH);
+    }
+    else if(lightLevel > 200){
+    digitalWrite(2, HIGH);
+    digitalWrite(3, HIGH);
+    }
+    else if(lightLevel >= 100){
+    digitalWrite(2, HIGH);
+    }
+    
+  //If none are satisfied turn all LEDs off
+  else{
+    digitalWrite(2, LOW);
+    digitalWrite(3, LOW);
+    digitalWrite(4, LOW);
+    digitalWrite(5, LOW);
+    digitalWrite(6, LOW);
+    digitalWrite(7, LOW);
+    digitalWrite(8, LOW);
+    digitalWrite(9, LOW);
+  }
+  delay(50);
+  //Reset all output values to low
+    digitalWrite(2, LOW);
+    digitalWrite(3, LOW);
+    digitalWrite(4, LOW);
+    digitalWrite(5, LOW);
+    digitalWrite(6, LOW);
+    digitalWrite(7, LOW);
+    digitalWrite(8, LOW);
+    digitalWrite(9, LOW);
+
+    //TESTING
+    Serial.print(lightLevel);
+}
